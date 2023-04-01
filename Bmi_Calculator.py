@@ -14,6 +14,15 @@ class BMI:
         self.current_value = tk.DoubleVar()
         self.current_value_02 = tk.DoubleVar()
 
+        self.label_01 = Label(self.root, font = "arial 60 bold", bg = "lightblue", fg = "#fff")
+        self.label_01.place(x = 125, y = 305)
+
+        self.label_02 = Label(self.root, font = "arial 20 bold", bg = "lightblue", fg = "#3b3a3a")
+        self.label_02.place(x = 250, y = 430)
+
+        self.label_03 = Label(self.root, font = "arial 10 ", bg = "lightblue")
+        self.label_03.place(x = 200, y = 500)
+
     def entry_box(self):
         self.Height = StringVar()
         self.Weight = StringVar()
@@ -32,6 +41,32 @@ class BMI:
     
     def get_current_value_02(self):
         return '{: .2f}'.format(self.current_value_02.get())
+
+
+    def BMI(self):
+        self.h = float(self.Height.get())
+        self.w = float(self.Weight.get())
+
+        #convert height into meter
+        self.m = self.h/100
+        self.bmi = round(float(self.w/self.m**2), 1)
+        self.label_01.config(text = self.bmi)
+
+        if self.bmi <= 18.5:
+            self.label_02.config(text = "Underweight!")
+            self.label_03.config(text = "You have lower weight then normal body!")
+
+        elif self.bmi > 18.5 and self.bmi <= 25:
+            self.label_02.config(text = "Normal!")
+            self.label_03.config(text = "It indicates that you are healthy!")
+            
+        elif self.bmi > 25 and self.bmi <= 30:
+            self.label_02.config(text = "Overweight!")
+            self.label_03.config(text = "It indicates that a person is \n slightly overweight! \n A doctor may advise to lose some \n weight for health reasons ")
+            
+        else:
+            self.label_02.config(text = "Obes!")
+            self.label_03.config(text = "Health may be at risk, if they do not \n lose your weight ! ")
 
 
     def run(self):
