@@ -11,6 +11,8 @@ class BMI:
         self.root.resizable(0,0)
         self.root.configure(bg = "#f0f1f5")
 
+        self.picture()
+
         self.current_value = tk.DoubleVar()
         self.current_value_02 = tk.DoubleVar()
 
@@ -22,6 +24,34 @@ class BMI:
 
         self.label_03 = Label(self.root, font = "arial 10 ", bg = "lightblue")
         self.label_03.place(x = 200, y = 500)
+
+    def picture(self):
+        
+        #icon
+        self.image_icon = PhotoImage(file = "images/icon.png")
+        self.root.iconphoto(False, self.image_icon)
+
+        #top
+        self.top = PhotoImage(file = "images/top.png")
+        self.top_image = Label(self.root, image = self.top, background = "#f0f1f5")
+        self.top_image.place(x = -10, y = -10)
+
+        #bottom box
+        Label(self.root, width = 72, height = 18, bg = "lightblue").pack(side = BOTTOM)
+
+        #two boxes
+        self.box = PhotoImage(file = "Images/box.png")
+        Label(self.root,image = self.box).place(x = 20, y = 100)
+        Label(self.root, image = self.box).place(x = 240, y = 100)
+
+        #scale
+        self.scale = PhotoImage(file = "images/scale.png")
+        Label(self.root, image = self.scale, bg = "lightblue").place(x = 20, y = 310)
+
+        #man icone
+        self.secondimage = Label(self.root, bg = "lightblue")
+        self.secondimage.place(x = 70, y = 530)
+     
 
     def entry_box(self):
         self.Height = StringVar()
